@@ -1,2 +1,2 @@
-# cervy
+# Červy
 Zápočtový program

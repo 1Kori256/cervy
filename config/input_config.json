@@ -1,0 +1,14 @@
+{
+    "left_press": {
+        "device": "mouse",
+        "button": 1,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "exit": {
+        "device": "keyboard",
+        "binding": 27,
+        "trigger": "press",
+        "implement": ["main_game"]
+    }
+}
