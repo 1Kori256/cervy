@@ -1,7 +1,7 @@
 {
-    "base_resolution": [300, 300],
-    "scaled_resolution": [300, 300],
-    "caption": "game",
+    "base_resolution": [800, 800],
+    "scaled_resolution": [800, 800],
+    "caption": "Červy",
     "background_color": [0, 0, 0]
 }
   

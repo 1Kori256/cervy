@@ -2,6 +2,7 @@
 Window object
 """
 
+import os
 import time
 import pygame
 from pygame.locals import *
@@ -36,7 +37,7 @@ class Window:
         self.frame_history = [self.dt]
         
         pygame.font.init()
-        self.font = pygame.font.Font(f"{self.app.path}/data/font/game_font.ttf", 8)
+        self.font = pygame.font.Font(os.path.join(self.app.path, "data", "font", "game_font.ttf"), 8)
     
     def calculate_fps(self):
         avg_dt = sum(self.frame_history) / len(self.frame_history)

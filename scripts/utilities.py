@@ -38,6 +38,7 @@ def debug(surface, font, pos, *args) -> None:
     Keyword arguments:
     surface - surface to blit debug values
     font - font to use to blit debug values
+    pos - position of debug tab
     *args - values to show in debugging menu
     """
     

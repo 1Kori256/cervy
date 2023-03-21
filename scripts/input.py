@@ -56,6 +56,7 @@ class Input:
         
         # Reset inputs that are triggered by press not by holding + scrolls
         self.reset_scroll("scroll_up", "scroll_down")
+        
         for bind, bind_data in self.config["input"].items():
             if bind_data["device"] == "keyboard":
                 if bind_data["trigger"] == "press":

@@ -10,5 +10,29 @@
         "binding": 27,
         "trigger": "press",
         "implement": ["main_game"]
+    },
+    "move_up": {
+        "device": "keyboard",
+        "binding": 119,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_down": {
+        "device": "keyboard",
+        "binding": 115,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_right": {
+        "device": "keyboard",
+        "binding": 100,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_left": {
+        "device": "keyboard",
+        "binding": 97,
+        "trigger": "press",
+        "implement": ["main_game"]
     }
 }

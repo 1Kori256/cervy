@@ -8,7 +8,7 @@ from scripts.virtual_space import VrtSpace
 class App:
     def __init__(self) -> None:
         self.path = os.path.dirname(os.path.abspath(__file__))
-        self.config = utilities.load_config(f"{self.path}/config")
+        self.config = utilities.load_config(os.path.join(self.path, "config"))
             
         self.window = Window(self)
         self.input = Input(self)
