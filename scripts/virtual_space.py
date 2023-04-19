@@ -3,7 +3,7 @@ Virtual space object
 """
 
 
-from scripts.worm import Worm
+from scripts.worm import Worm, Food
 import time
 
 
@@ -24,7 +24,9 @@ class VrtSpace:
         self.move_worms = False
         self.start_time = time.time()
 
-        self.test_worm = Worm()
+        self.test_worm = Worm(1)
+        self.test_worm2 = Worm(2)
+        self.food = Food()
 
         self.size = 20
     
@@ -48,7 +50,20 @@ class VrtSpace:
         if self.app.input.keyboard_variables["move_left"]:
             self.test_worm.dir = [-1, 0]
 
+        if self.app.input.keyboard_variables["move_up2"]:
+            self.test_worm2.dir = [0, -1]
+
+        if self.app.input.keyboard_variables["move_down2"]:
+            self.test_worm2.dir = [0, 1]
+
+        if self.app.input.keyboard_variables["move_right2"]:
+            self.test_worm2.dir = [1, 0]
+
+        if self.app.input.keyboard_variables["move_left2"]:
+            self.test_worm2.dir = [-1, 0]
+
         if self.move_worms:
-            self.test_worm.update()
+            self.test_worm.update(self.food, self.test_worm2)
+            self.test_worm2.update(self.food, self.test_worm)
 
         self.move_worms = False

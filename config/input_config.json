@@ -34,5 +34,29 @@
         "binding": 97,
         "trigger": "press",
         "implement": ["main_game"]
+    },
+    "move_up2": {
+        "device": "keyboard",
+        "binding": 1073741906,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_down2": {
+        "device": "keyboard",
+        "binding": 1073741905,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_right2": {
+        "device": "keyboard",
+        "binding": 1073741903,
+        "trigger": "press",
+        "implement": ["main_game"]
+    },
+    "move_left2": {
+        "device": "keyboard",
+        "binding": 1073741904,
+        "trigger": "press",
+        "implement": ["main_game"]
     }
 }
