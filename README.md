@@ -1,2 +1,2 @@
 # Červy
-Zápočtový program
+Not finished yet!
