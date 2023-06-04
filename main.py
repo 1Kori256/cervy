@@ -22,7 +22,7 @@ class App:
         self.renderer.render()
         self.window.render_screen()
 
-
+    
     def run(self) -> None:
         while True:
             self.update()

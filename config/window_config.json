@@ -1,6 +1,6 @@
 {
-    "base_resolution": [800, 800],
-    "scaled_resolution": [800, 800],
+    "base_resolution": [960, 960],
+    "scaled_resolution": [960, 960],
     "caption": "Červy",
     "background_color": [0, 0, 0]
 }
