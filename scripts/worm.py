@@ -26,10 +26,13 @@ class Block:
         return Block(self.x + other.x, self.y + other.y)
 
 class Worm:
-    def __init__(self, player_id, size) -> None:
+    def __init__(self, player_id, size, pos = None) -> None:
         self.player_id = player_id
         self.size = size
-        self.body = [Block(9, 10), Block(8, 10), Block(7, 10)]
+        if pos is None:
+            self.body = [Block(9, 10), Block(8, 10), Block(7, 10)]
+        else:
+            self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 1, pos[1])]
         self.direction = Block(1, 0)
         self.new_block = False
 

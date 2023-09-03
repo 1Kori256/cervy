@@ -24,8 +24,6 @@ class VrtSpace:
         self.move_worms = False
         self.start_time = time.time()
 
-        self.test_worm = Worm(1, self.size)
-        self.test_worm2 = Worm(2, self.size)
         self.food = Food(self.size)
 
     
