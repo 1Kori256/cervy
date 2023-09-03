@@ -52,7 +52,6 @@ class Worm:
         self.body_bl = scale_image(pygame.image.load('data/images/body_bl.png').convert_alpha())
 
     def update(self, food, warm2) -> None:
-        
         if food.pos == self.body[0]:
             self.new_block = True
             food.generate_pos()
@@ -66,19 +65,6 @@ class Worm:
             body_copy = self.body[:-1]
             body_copy.insert(0, body_copy[0] + self.direction)
             self.body = body_copy[:]
-
-        #self.tail.append(self.head_pos.copy())
-        #self.head_pos[0] += self.dir[0]
-        #self.head_pos[1] += self.dir[1]
-        #if food.pos == self.head_pos:
-        #    food.generate_pos()
-        #else:
-        #    self.tail.pop(0)
-        #
-        #is_dead = any([self.check_collision(self), self.check_collision(warm2)])
-        #print(is_dead)
-
-
 
     def update_head_image(self):
         head_relation = self.body[1] - self.body[0]
@@ -124,15 +110,6 @@ class Worm:
                     elif previous_block.x == 1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == 1:
                         surface.blit(self.body_br, block_rect)
                         
-
-    def check_collision(self, other) -> bool:
-        if self.player_id != other.player_id and self.head_pos == other.head_pos:
-            return True
-        for tail_part in other.tail:
-            if self.head_pos == tail_part:
-                return True
-         
-        return False
 
 
 class Food:

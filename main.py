@@ -5,6 +5,7 @@ from scripts.input import Input
 from scripts.renderer import Renderer
 from scripts.virtual_space import VrtSpace
 
+
 class App:
     def __init__(self) -> None:
         self.path = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +23,7 @@ class App:
         self.renderer.render()
         self.window.render_screen()
 
-    
+
     def run(self) -> None:
         while True:
             self.update()

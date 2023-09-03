@@ -17,3 +17,5 @@ Create server side
 
 # Complete missing docstrings / comments
 ...
+
+# Finnish about me + write documentation
