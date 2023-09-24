@@ -25,6 +25,7 @@ class VrtSpace:
         self.start_time = time.time()
 
         self.food = Food(self.size)
+        self.updated = False
 
     
     def update(self) -> None:
@@ -46,5 +47,10 @@ class VrtSpace:
 
         if self.app.input.keyboard_variables["move_left"]:
             self.worms[self.app.player_id].direction = Block(-1, 0)
+
+        self.updated = False
+        if self.app.game_instance.update_worms[self.app.player_id]:
+            self.worms[self.app.player_id].update(self.food)
+            self.updated = True
 
         self.move_worms = False

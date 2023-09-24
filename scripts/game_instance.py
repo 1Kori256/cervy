@@ -22,11 +22,13 @@ class GameInstance():
         self.ready = False
         self.started = False
         self.start_worms = start_worms
+        self.update_worms = []
         self.set_worms()
 
     def set_worms(self):
         for i in range(self.active_players):
             self.worms.append(self.start_worms[i])
+            self.update_worms.append(False)
 
     def is_ready(self):
         if self.ready:
@@ -35,8 +37,7 @@ class GameInstance():
     def update(self):
         if self.started:
             for i in range(self.active_players):
-                print(i, self.worms[i])
-                pass
+                self.update_worms[i] = True
 
     def reset():
         pass

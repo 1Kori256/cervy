@@ -125,6 +125,8 @@ class Worm:
     def to_array(self):
         return [(block.x, block.y) for block in self.body]
 
+    def to_string(self):
+        return ";".join(f"{block.x}_{block.y}" for block in self.body)
 
 class Food:
     def __init__(self, size) -> None:

@@ -24,6 +24,9 @@ print("Waiting for a connection, Server Started")
 
 LAST_UPDATE = time.time()
 
+def str_to_array(string):
+    return [tuple(block.split("_")) for block in string.split(";")]
+
 
 def threaded_client(conn, player_id, game_id):
     global id_count, LAST_UPDATE
@@ -45,6 +48,9 @@ def threaded_client(conn, player_id, game_id):
                         game.ready = True
                         game.is_ready()
                     elif data != "get":
+                        if data:
+                            game.worms[player_id] = start_new_thread(data)
+                            game.update_worms[player_id] = False
                         if time.time() - LAST_UPDATE > 0.25:
                             game.update()
                             LAST_UPDATE = time.time()

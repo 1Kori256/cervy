@@ -38,8 +38,10 @@ class App:
         if self.input.keyboard_variables["ready"]:
             self.n.send("ready")
             print("lets go")
+        elif self.vrt_space.updated:
+            self.game_instance = self.n.send(self.vrt_space.worms[self.player_id].to_string())
         else:
-            self.game_instance = self.n.send(self.vrt_space.worms[self.player_id].to_array())
+            self.n.send("")
 
 
     def run(self) -> None:
