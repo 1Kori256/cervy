@@ -57,7 +57,9 @@ class VrtSpace:
 
         self.updated = False
         if self.app.game_instance.update_worms[self.app.player_id]:
-            self.worms[self.app.player_id].update(self.food, self.worms[:self.app.player_id] + self.worms[self.app.player_id + 1:])
+            other_worms = self.worms[:self.app.game_instance.active_players]
+            other_worms = other_worms[:self.app.player_id] + other_worms[self.app.player_id + 1:]
+            self.worms[self.app.player_id].update(self.food, other_worms)
             self.updated = True
 
         self.move_worms = False
