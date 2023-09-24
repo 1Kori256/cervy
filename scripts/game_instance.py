@@ -51,7 +51,7 @@ class GameInstance():
                 self.update_worms[i] = True
             if sum(self.dead) == 1:
                 won = self.dead.index(1)
-                print(f"Player {won} won! ")
+                print("Player " + str(won) + " won! ")
                 self.reset()
 
     def reset(self):
