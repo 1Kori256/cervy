@@ -24,6 +24,7 @@ class GameInstance():
         self.start_worms = start_worms
         self.update_worms = []
         self.set_worms()
+        print(self.worms)
 
     def set_worms(self):
         for i in range(self.active_players):

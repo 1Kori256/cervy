@@ -38,7 +38,7 @@ class VrtSpace:
 
 
         for i in range(self.app.game_instance.active_players):
-            self.worms[i].body = [Block(*block) for block in self.app.game_instance.worms[i]]
+            self.worms[i].body = [Block(int(block[0]), int(block[1])) for block in self.app.game_instance.worms[i]]
 
         if self.app.input.keyboard_variables["move_up"]:
             self.worms[self.app.player_id].direction = Block(0, -1)

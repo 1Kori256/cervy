@@ -44,16 +44,16 @@ def threaded_client(conn, player_id, game_id):
                 else:
                     if data == "reset":
                         game.reset()
-                    if data == "ready":
+                    elif data == "ready":
                         game.ready = True
                         game.is_ready()
-                    if data == "check":
+                    elif data == "check":
                         if time.time() - LAST_UPDATE > 0.25:
                             game.update()
                             LAST_UPDATE = time.time()
                     elif data != "get":
                         if data:
-                            game.worms[player_id] = start_new_thread(data)
+                            game.worms[player_id] = str_to_array(data)
                             game.update_worms[player_id] = False
 
                     conn.sendall(pickle.dumps(game))
