@@ -112,7 +112,13 @@ class Worm:
                         surface.blit(self.body_tr, block_rect)
                     elif previous_block.x == 1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == 1:
                         surface.blit(self.body_br, block_rect)
-                        
+    
+    def get_worm(self):
+        return ";".join([f"{block.x}_{block.y}" for block in self.body])
+
+
+    def set_worm(self, body_str):
+        self.body = [Block(x, y) for x, y in [block.split("_") for block in body_str.split(";")]]
 
 
 class Food:

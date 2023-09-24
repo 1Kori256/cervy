@@ -36,9 +36,8 @@ class App:
 
     def update(self) -> None:
 
-        p2_pos = read_pos(self.n.send(make_pos((self.vrt_space.test_worm.direction.x, self.vrt_space.test_worm.direction.y))))
-        self.vrt_space.test_worm2.direction.x = p2_pos[0]
-        self.vrt_space.test_worm2.direction.y = p2_pos[1]
+        p2_body_str = self.n.send(self.vrt_space.test_worm.get_worm())
+        self.vrt_space.test_worm2.set_worm(p2_body_str)
 
         self.input.update()
         self.vrt_space.update()
