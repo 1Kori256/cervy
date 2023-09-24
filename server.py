@@ -58,7 +58,7 @@ def threaded_client(conn, player_id, game_id):
                                 game.food = game.generate_pos()
                                 game.lengths[player_id] = len(game.worms[player_id])
                             game.update_worms[player_id] = False
-                            if str_to_array(data)[0][0] > 100:
+                            if int(str_to_array(data)[0][0]) > 100:
                                 game.dead[player_id] = 0
                             
 
