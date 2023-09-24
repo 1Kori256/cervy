@@ -23,17 +23,20 @@ class GameInstance():
         self.started = False
         self.start_worms = start_worms
         self.update_worms = []
-        self.set_worms()
         self.lengths = []
+        self.dead = []
+        self.set_worms()
 
     def set_worms(self):
         self.worms = []
         self.update_worms = []
         self.lengths = []
+        self.dead = []
         for i in range(self.active_players):
             self.worms.append(self.start_worms[i])
             self.update_worms.append(False)
             self.lengths.append(3)
+            self.dead.append(1)
 
     def is_ready(self):
         if self.ready:
@@ -46,6 +49,18 @@ class GameInstance():
         if self.started:
             for i in range(self.active_players):
                 self.update_worms[i] = True
+            if sum(self.dead) == 1:
+                won = self.dead.index(1)
+                print(f"Player {won} won! ")
+                self.reset()
 
-    def reset():
-        pass
+    def reset(self):
+        self.food = self.generate_pos()
+        self.worms = []
+        self.ready = False
+        self.started = False
+        self.start_worms = start_worms
+        self.update_worms = []
+        self.lengths = []
+        self.dead = []
+        self.set_worms()

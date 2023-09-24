@@ -54,8 +54,9 @@ class Worm:
         self.body_bl = scale_image(pygame.image.load('data/images/body_bl.png').convert_alpha())
 
         self.ate = False
+        self.dead = False
 
-    def update(self, food) -> None:
+    def update(self, food, other_worms) -> None:
         if food.pos == self.body[0]:
             self.new_block = True
             self.ate = True
@@ -69,6 +70,19 @@ class Worm:
             body_copy = self.body[:-1]
             body_copy.insert(0, body_copy[0] + self.direction)
             self.body = body_copy[:]
+
+        if self.body[0].x >= 30 or self.body[0].x < 0 or self.body[0].y >= 30 or self.body[0].y < 0:
+            self.die()
+
+        for worm in other_worms:
+            for part in worm.body:
+                if self.body[0] == part:
+                    self.die()
+
+    def die(self):
+        self.dead = True
+        pos = (100000, 0)
+        self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 2, pos[1])]
 
     def update_head_image(self):
         head_relation = self.body[1] - self.body[0]
