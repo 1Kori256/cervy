@@ -3,6 +3,8 @@ from _thread import *
 import sys
 import os
 import scripts.utilities as utilities
+import pickle
+import time
 
 path = os.path.dirname(os.path.abspath(__file__))
 config = utilities.load_config(os.path.join(path, "config"))
@@ -19,58 +21,66 @@ except socket.error as e:
 s.listen()
 print("Waiting for a connection, Server Started")
 
-start_data_of_players = ["10_10;10_9;10_8", "20_10;20_9;20_8", "10_20;10_19;10_18", "20_20;20_19;20_18"]
-data_of_players = []
 
-import time 
-start_time = time.time() 
-update_worms = [False, False, False, False]
-def game_tick():
-    while True:
-        if time.time() - start_time >= 0.250:
-            start_time = time.time()
-            update_worms = [True, True, True, True]
+LAST_UPDATE = time.time()
 
-def threaded_client(conn, player):
-    data_of_players.append(start_data_of_players[player])
-    conn.send("|".join(data_of_players) + "&False&" + player)
-    reply = ""
+
+def threaded_client(conn, player_id, game_id):
+    global id_count
+    conn.send(str.encode(str(player_id)))
+
     while True:
         try:
-            data = conn.recv(2048).decode()
-            data_of_players[player] = data
+            data = conn.recv(4096).decode()
 
-            if not data:
-                free_player_slots.append(player)
-                print("Disconnected")
-                break
-            else:
-                reply = "|".join(data_of_players)
-                if update_worms[player]:
-                    reply += "&True"
-                    update_worms[player] = False
+            if game_id in games:
+                game = games[game_id]
+
+                if not data:
+                    break
                 else:
-                    reply += "&False"
+                    if data == "reset":
+                        game.reset()
+                    elif data != "get":
+                        if time.time() - LAST_UPDATE > 0.25:
+                            game.update()
+                            LAST_UPDATE = time.time()
 
-                #print("Received: ", data)
-                #print("Sending : ", reply)
-
-            conn.sendall(str.encode(reply))
+                    conn.sendall(pickle.dumps(game))
+            else:
+                break
         except:
             break
 
     print("Lost connection")
+    try:
+        del games[game_id]
+        print("Closing Game", game_id)
+    except:
+        pass
+
+    id_count -= 1
     conn.close()
 
-free_player_slots = [0, 1]
+
+from scripts.game_instance import GameInstance
+
+games = {}
+id_count = 0
+
 while True:
     conn, addr = s.accept()
     print("Connected to:", addr)
 
-    if len(free_player_slots) == 0:
-        print("No free player slots")
-        continue
+    game_id = id_count // 4 
+    if id_count % 4 == 0:
+        games[game_id] = GameInstance(game_id)
+        player_id = 0
+        print("Creating a new game...")
+    else:
+        player_id = games[game_id].active_players
+        games[game_id].active_players += 1
 
-    current_player = free_player_slots[0]
-    free_player_slots.pop(0)
-    start_new_thread(threaded_client, (conn, current_player))
+
+    start_new_thread(threaded_client, (conn, player_id, game_id))
+    id_count += 1

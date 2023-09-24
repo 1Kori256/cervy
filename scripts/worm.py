@@ -54,7 +54,7 @@ class Worm:
         self.body_br = scale_image(pygame.image.load('data/images/body_br.png').convert_alpha())
         self.body_bl = scale_image(pygame.image.load('data/images/body_bl.png').convert_alpha())
 
-    def update(self, food, warm2) -> None:
+    def update(self, food) -> None:
         if food.pos == self.body[0]:
             self.new_block = True
             food.generate_pos()
@@ -132,4 +132,4 @@ class Food:
         surface.blit(self.image, fruit_rect)
 
     def generate_pos(self) -> None:
-        self.pos = Block(random.randint(0, 20), random.randint(0, 20))
+        self.pos = Block(random.randint(0, 30), random.randint(0, 30))

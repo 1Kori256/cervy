@@ -43,7 +43,4 @@ class VrtSpace:
         if self.app.input.keyboard_variables["move_left"]:
             self.worm.direction = Block(-1, 0)
 
-        if self.move_worms:
-            self.worm.update(self.food, self.test_worm2)
-
         self.move_worms = False

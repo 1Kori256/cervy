@@ -1,4 +1,5 @@
 import socket
+import pickle
 
 
 class Network:
@@ -7,10 +8,10 @@ class Network:
         self.server = app.config["server"]["ip"]
         self.port = 5555
         self.addr = (self.server, self.port)
-        self.data = self.connect()
+        self.player = self.connect()
 
-    def get_data(self):
-        return self.data
+    def get_player(self):
+        return self.player
 
     def connect(self):
         try:
@@ -22,6 +23,6 @@ class Network:
     def send(self, data):
         try:
             self.client.send(str.encode(data))
-            return self.client.recv(2048).decode()
+            return pickle.loads(self.client.recv(2048*2))
         except socket.error as e:
             print(e)
