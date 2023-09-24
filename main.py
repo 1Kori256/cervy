@@ -29,13 +29,14 @@ class App:
 
         self.game_instance = self.n.send("get")
         print(self.game_instance)
+        print(self.game_instance.worms)
 
         self.input.update()
         self.vrt_space.update()
         self.renderer.render()
         self.window.render_screen()
 
-        self.game_instance = self.n.send()
+        self.game_instance = self.n.send("")
 
 
     def run(self) -> None:
@@ -47,14 +48,13 @@ def menu_screen():
     app = App()
 
     run = True
-    clock = pygame.time.Clock()
 
     while run:
-        clock.tick(60)
-        app.window.app_window.fill((128, 128, 128))
+        app.window.clock.tick(60)
+        app.window.window.fill((128, 128, 128))
         font = pygame.font.SysFont("comicsans", 60)
         text = font.render("Click to Play!", 1, (255,0,0))
-        app.window.app_window.blit(text, (100,200))
+        app.window.window.blit(text, (100,200))
         pygame.display.update()
 
         for event in pygame.event.get():
