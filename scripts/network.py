@@ -7,10 +7,10 @@ class Network:
         self.server = app.config["server"]["ip"]
         self.port = 5555
         self.addr = (self.server, self.port)
-        self.pos = self.connect()
+        self.data = self.connect()
 
-    def getPos(self):
-        return self.pos
+    def get_data(self):
+        return self.data
 
     def connect(self):
         try:

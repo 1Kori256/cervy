@@ -21,7 +21,9 @@ class App:
         self.vrt_space = VrtSpace(self)
 
         self.n = Network(self)
+        start_worm = self.n.get_data()
         self.vrt_space.test_worm = Worm(1, self.vrt_space.size)
+        self.vrt_space.test_worm.set_worm(start_worm)
         self.vrt_space.test_worm2 = Worm(2, self.vrt_space.size)
 
 

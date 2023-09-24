@@ -22,7 +22,7 @@ print("Waiting for a connection, Server Started")
 data_of_players = ["10_10;10_9;10_8", "20_10;20_9;20_8"]
 
 def threaded_client(conn, player):
-    conn.send(str.encode(""))
+    conn.send(str.encode(data_of_players[player]))
     reply = ""
     while True:
         try:
