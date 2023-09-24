@@ -36,15 +36,15 @@ class VrtSpace:
             self.worms[i] = Worm(i, self.size, from_array=self.worms[i])
 
         if self.app.input.keyboard_variables["move_up"]:
-            self.worm.direction = Block(0, -1)
+            self.worms[self.app.player_id].direction = Block(0, -1)
 
         if self.app.input.keyboard_variables["move_down"]:
-            self.worm.direction = Block(0, 1)
+            self.worms[self.app.player_id].direction = Block(0, 1)
 
         if self.app.input.keyboard_variables["move_right"]:
-            self.worm.direction = Block(1, 0)
+            self.worms[self.app.player_id].direction = Block(1, 0)
 
         if self.app.input.keyboard_variables["move_left"]:
-            self.worm.direction = Block(-1, 0)
+            self.worms[self.app.player_id].direction = Block(-1, 0)
 
         self.move_worms = False

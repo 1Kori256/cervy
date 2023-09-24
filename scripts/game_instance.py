@@ -22,6 +22,7 @@ class GameInstance():
         self.ready = False
         self.started = False
         self.start_worms = start_worms
+        self.set_worms()
 
     def set_worms(self):
         for i in range(self.active_players):
@@ -29,7 +30,6 @@ class GameInstance():
 
     def is_ready(self):
         if self.ready:
-            self.set_worms()
             self.started = True
 
     def update(self):

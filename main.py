@@ -22,7 +22,7 @@ class App:
 
     def web_init(self):
         self.n = Network(self)
-        self.player_id = self.n.get_player()
+        self.player_id = int(self.n.get_player())
         self.game_instance = self.n.send("get")
 
     def update(self) -> None:
@@ -38,8 +38,8 @@ class App:
         if self.input.keyboard_variables["ready"]:
             self.n.send("ready")
             print("lets go")
-        #else:
-        #    self.game_instance = self.n.send("")
+        else:
+            self.game_instance = self.n.send(self.vrt_space.worms[self.player_id].to_array())
 
 
     def run(self) -> None:
