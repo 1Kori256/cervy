@@ -26,13 +26,10 @@ class Block:
         return Block(self.x + other.x, self.y + other.y)
 
 class Worm:
-    def __init__(self, player_id, size, pos = None, from_array = None) -> None:
+    def __init__(self, player_id, size, pos, from_array = None) -> None:
         self.player_id = player_id
         self.size = size
-        if pos is None:
-            self.body = [Block(9, 10), Block(8, 10), Block(7, 10)]
-        else:
-            self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 2, pos[1])]
+        self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 2, pos[1])]
         if from_array:
             self.body = [Block(*block) for block in from_array]
         self.direction = Block(1, 0)
@@ -56,10 +53,12 @@ class Worm:
         self.body_br = scale_image(pygame.image.load('data/images/body_br.png').convert_alpha())
         self.body_bl = scale_image(pygame.image.load('data/images/body_bl.png').convert_alpha())
 
+        self.ate = False
+
     def update(self, food) -> None:
         if food.pos == self.body[0]:
             self.new_block = True
-            food.generate_pos()
+            self.ate = True
 
         if self.new_block == True:
             body_copy = self.body[:]

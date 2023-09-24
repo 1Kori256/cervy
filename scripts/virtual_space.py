@@ -25,6 +25,7 @@ class VrtSpace:
         self.start_time = time.time()
 
         self.food = Food(self.size)
+        self.food.pos = Block(-1, -1)
         self.updated = False
 
         self.worms = [0, 1, 2, 3]
@@ -37,6 +38,7 @@ class VrtSpace:
         
         """Update in-game stuff"""
 
+        self.food.pos = Block(int(self.app.game_instance.food[0]), int(self.app.game_instance.food[1]))  
 
         for i in range(self.app.game_instance.active_players):
             self.worms[i].body = [Block(int(block[0]), int(block[1])) for block in self.app.game_instance.worms[i]]

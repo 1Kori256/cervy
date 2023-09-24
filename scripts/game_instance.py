@@ -17,22 +17,30 @@ class GameInstance():
     def __init__(self, id):
         self.id = id
         self.active_players = 1
-        self.food = (5, 5)
+        self.food = self.generate_pos()
         self.worms = []
         self.ready = False
         self.started = False
         self.start_worms = start_worms
         self.update_worms = []
         self.set_worms()
+        self.lengths = []
 
     def set_worms(self):
+        self.worms = []
+        self.update_worms = []
+        self.lengths = []
         for i in range(self.active_players):
             self.worms.append(self.start_worms[i])
             self.update_worms.append(False)
+            self.lengths.append(3)
 
     def is_ready(self):
         if self.ready:
             self.started = True
+
+    def generate_pos(self) -> None:
+        self.pos = (random.randint(0, 30), random.randint(0, 30))
 
     def update(self):
         if self.started:

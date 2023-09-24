@@ -54,6 +54,9 @@ def threaded_client(conn, player_id, game_id):
                     elif data != "get":
                         if data:
                             game.worms[player_id] = str_to_array(data)
+                            if game.lengths[player_id] != len(game.worms[player_id]):
+                                game.food = game.generate_pos()
+                                game.lengths[player_id] = len(game.worms[player_id])
                             game.update_worms[player_id] = False
 
                     conn.sendall(pickle.dumps(game))
