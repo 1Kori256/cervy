@@ -41,7 +41,7 @@ class App:
         elif self.vrt_space.updated:
             self.game_instance = self.n.send(self.vrt_space.worms[self.player_id].to_string())
         else:
-            self.n.send("")
+            self.n.send("check")
 
 
     def run(self) -> None:

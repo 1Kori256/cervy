@@ -27,14 +27,18 @@ class VrtSpace:
         self.food = Food(self.size)
         self.updated = False
 
+        self.worms = [0, 1, 2, 3]
+        for i in range(4):
+            self.worms[i] = Worm(i, self.size)
+
     
     def update(self) -> None:
         
         """Update in-game stuff"""
 
-        self.worms = self.app.game_instance.worms
-        for i in range(len(self.worms)):
-            self.worms[i] = Worm(i, self.size, from_array=self.worms[i])
+
+        for i in range(self.app.game_instance.active_players):
+            self.worms[i].body = [Block(*block) for block in self.app.game_instance.worms[i]]
 
         if self.app.input.keyboard_variables["move_up"]:
             self.worms[self.app.player_id].direction = Block(0, -1)

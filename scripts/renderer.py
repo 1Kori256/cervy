@@ -25,7 +25,7 @@ class Renderer:
         self.surface = self.app.window.app_window
         
         #self.app.vrt_space.food.draw(self.surface)
-        for worm in self.app.vrt_space.worms:
+        for worm in self.app.vrt_space.worms[:self.app.game_instance.active_players]:
             worm.draw(self.surface)
 
         # Show debug values
