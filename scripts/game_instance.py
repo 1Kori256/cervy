@@ -2,6 +2,9 @@ import random
 import time
 from .worm import Worm, Food
 
+import pygame
+pygame.init()
+pygame.display.set_mode([960, 960])
 
 start_worms = [
     Worm(0, 32, (10, 10)),
