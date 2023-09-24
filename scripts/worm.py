@@ -119,7 +119,7 @@ class Worm:
 
     def set_worm(self, body_str):
         print(body_str)
-        self.body = [Block(x, y) for x, y in [block.split("_") for block in body_str.split(";")]]
+        self.body = [Block(int(x), int(y)) for x, y in [block.split("_") for block in body_str.split(";")]]
 
 
 class Food:
