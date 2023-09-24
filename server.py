@@ -26,7 +26,7 @@ LAST_UPDATE = time.time()
 
 
 def threaded_client(conn, player_id, game_id):
-    global id_count
+    global id_count, LAST_UPDATE
     conn.send(str.encode(str(player_id)))
 
     while True:
@@ -41,6 +41,9 @@ def threaded_client(conn, player_id, game_id):
                 else:
                     if data == "reset":
                         game.reset()
+                    if data == "ready":
+                        game.ready = True
+                        game.is_ready()
                     elif data != "get":
                         if time.time() - LAST_UPDATE > 0.25:
                             game.update()

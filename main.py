@@ -36,7 +36,11 @@ class App:
         self.renderer.render()
         self.window.render_screen()
 
-        self.game_instance = self.n.send("")
+        if self.input.keyboard_variables["ready"]:
+            self.n.send("ready")
+            print("lets go")
+        else:
+            self.game_instance = self.n.send("")
 
 
     def run(self) -> None:

@@ -30,12 +30,12 @@ class GameInstance():
     def is_ready(self):
         if self.ready:
             self.set_worms()
-            time.sleep(3)
             self.started = True
 
     def update(self):
         if self.started:
             for i in range(self.active_players):
+                print(i, self.worms[i])
                 pass
 
     def reset():

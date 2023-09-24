@@ -58,5 +58,11 @@
         "binding": 1073741904,
         "trigger": "press",
         "implement": ["main_game"]
+    },
+    "ready": {
+        "device": "keyboard",
+        "binding": 32,
+        "trigger": "press",
+        "implement": ["main_game"]
     }
 }
