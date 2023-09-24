@@ -1,2 +1,3 @@
 # Červy
-Not finished yet!
+Zápočtovy program pre progamovanie II
+Samuel Koribanič
