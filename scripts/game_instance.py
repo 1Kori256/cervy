@@ -40,7 +40,7 @@ class GameInstance():
             self.started = True
 
     def generate_pos(self) -> None:
-        self.pos = (random.randint(0, 30), random.randint(0, 30))
+        return (random.randint(0, 30), random.randint(0, 30))
 
     def update(self):
         if self.started:
