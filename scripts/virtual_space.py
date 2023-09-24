@@ -31,6 +31,10 @@ class VrtSpace:
         
         """Update in-game stuff"""
 
+        self.worms = self.app.game_instance.worms
+        for i in range(len(self.worms)):
+            self.worms[i] = Worm(i, self.size, from_array=self.worms[i])
+
         if self.app.input.keyboard_variables["move_up"]:
             self.worm.direction = Block(0, -1)
 
