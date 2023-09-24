@@ -7,10 +7,10 @@ pygame.init()
 pygame.display.set_mode([960, 960])
 
 start_worms = [
-    Worm(0, 32, (10, 10)).to_array(),
-    Worm(1, 32, (10, 20)).to_array(),
-    Worm(2, 32, (20, 10)).to_array(),
-    Worm(3, 32, (20, 20)).to_array(),
+    Worm(0, 32, (5, 5)).to_array(),
+    Worm(1, 32, (5, 25)).to_array(),
+    Worm(2, 32, (25, 5)).to_array(),
+    Worm(3, 32, (25, 25)).to_array(),
 ]
 
 class GameInstance():
@@ -24,7 +24,6 @@ class GameInstance():
         self.start_worms = start_worms
         self.update_worms = []
         self.set_worms()
-        print(self.worms)
 
     def set_worms(self):
         for i in range(self.active_players):

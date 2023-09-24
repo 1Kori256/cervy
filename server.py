@@ -90,7 +90,7 @@ while True:
     else:
         player_id = games[game_id].active_players
         games[game_id].active_players += 1
-
+        games[game_id].set_worms()
 
     start_new_thread(threaded_client, (conn, player_id, game_id))
     id_count += 1

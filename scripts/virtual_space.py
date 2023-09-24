@@ -28,8 +28,9 @@ class VrtSpace:
         self.updated = False
 
         self.worms = [0, 1, 2, 3]
+        pos = [(5, 5), (5, 25), (25, 5), (25, 25)]
         for i in range(4):
-            self.worms[i] = Worm(i, self.size)
+            self.worms[i] = Worm(i, self.size, pos[i])
 
     
     def update(self) -> None:
