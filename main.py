@@ -28,8 +28,7 @@ class App:
     def update(self) -> None:
 
         self.game_instance = self.n.send("get")
-        print(self.game_instance)
-        print(self.game_instance.worms)
+
 
         self.input.update()
         self.vrt_space.update()
@@ -39,8 +38,8 @@ class App:
         if self.input.keyboard_variables["ready"]:
             self.n.send("ready")
             print("lets go")
-        else:
-            self.game_instance = self.n.send("")
+        #else:
+        #    self.game_instance = self.n.send("")
 
 
     def run(self) -> None:
