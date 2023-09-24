@@ -19,37 +19,29 @@ except socket.error as e:
 s.listen()
 print("Waiting for a connection, Server Started")
 
-def read_pos(str):
-    str = str.split(",")
-    return int(str[0]), int(str[1])
-
-
-def make_pos(tup):
-    return str(tup[0]) + "," + str(tup[1])
-
-pos = [(10,10),(10,20)]
+data_of_players = ["", ""]
 
 def threaded_client(conn, player):
-    conn.send(str.encode(make_pos(pos[player])))
+    conn.send(str.encode(""))
     reply = ""
     while True:
         try:
-            data = read_pos(conn.recv(2048).decode())
-            pos[player] = data
+            data = conn.recv(2048).decode()
+            data_of_players[player] = data
 
             if not data:
                 print("Disconnected")
                 break
             else:
                 if player == 1:
-                    reply = pos[0]
+                    reply = data_of_players[0]
                 else:
-                    reply = pos[1]
+                    reply = data_of_players[1]
 
                 print("Received: ", data)
                 print("Sending : ", reply)
 
-            conn.sendall(str.encode(make_pos(reply)))
+            conn.sendall(str.encode(reply))
         except:
             break
 

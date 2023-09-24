@@ -9,14 +9,6 @@ from scripts.worm import Worm
 from scripts.network import Network
 clientNumber = 0
 
-def read_pos(str):
-    str = str.split(",")
-    return int(str[0]), int(str[1])
-
-
-def make_pos(tup):
-    return str(tup[0]) + "," + str(tup[1])
-
 
 class App:
     def __init__(self) -> None:
@@ -29,9 +21,8 @@ class App:
         self.vrt_space = VrtSpace(self)
 
         self.n = Network(self)
-        start_dir = read_pos(self.n.getPos())
-        self.vrt_space.test_worm = Worm(1, self.vrt_space.size, start_dir)
-        self.vrt_space.test_worm2 = Worm(2, self.vrt_space.size, (10, 20))
+        self.vrt_space.test_worm = Worm(1, self.vrt_space.size)
+        self.vrt_space.test_worm2 = Worm(2, self.vrt_space.size)
 
 
     def update(self) -> None:
