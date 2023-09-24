@@ -32,7 +32,7 @@ class Worm:
         if pos is None:
             self.body = [Block(9, 10), Block(8, 10), Block(7, 10)]
         else:
-            self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 1, pos[1])]
+            self.body = [Block(*pos), Block(pos[0] - 1, pos[1]), Block(pos[0] - 2, pos[1])]
         self.direction = Block(1, 0)
         self.new_block = False
 
