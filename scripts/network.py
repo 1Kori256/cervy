@@ -3,9 +3,12 @@ import pickle
 
 
 class Network:
-    def __init__(self, app):
+    def __init__(self, app, ip = None):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server = app.config["server"]["ip"]
+        if ip is None:
+            self.server = app.config["server"]["ip"]
+        else:
+            self.server = ip
         self.port = 5555
         self.addr = (self.server, self.port)
         self.player = self.connect()

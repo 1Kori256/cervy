@@ -8,7 +8,10 @@ import time
 
 path = os.path.dirname(os.path.abspath(__file__))
 config = utilities.load_config(os.path.join(path, "config"))
-server = config["server"]["ip"]
+if len(sys.argv) > 1:
+    server = sys.argv[1]
+else:
+    server = config["server"]["ip"]
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

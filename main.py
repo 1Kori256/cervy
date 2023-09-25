@@ -1,11 +1,11 @@
 import os
 import pygame
+import sys
 import scripts.utilities as utilities
 from scripts.window import Window
 from scripts.input import Input
 from scripts.renderer import Renderer
 from scripts.virtual_space import VrtSpace
-from scripts.worm import Worm
 from scripts.network import Network
 
 
@@ -21,7 +21,10 @@ class App:
 
 
     def web_init(self):
-        self.n = Network(self)
+        if len(sys.argv) > 1:
+            self.n = Network(self, sys.argv[1])
+        else:
+            self.n = Network(self)
         self.player_id = int(self.n.get_player())
         self.game_instance = self.n.send("get")
 
